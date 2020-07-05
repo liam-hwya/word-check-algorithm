@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body,p{
+        font-family: 'Montserrat', sans-serif;
+    }
+    h1,h2{
+        font-family: 'Anton', sans-serif;
+        color: #0f0f0f;
+    }
+    a{
+        text-decoration: none;
+        color: #000;
+    }
+
+    /* Logo style */
+    .logo{
+        width: 100vw;
+        padding: 30px 0px;
+        text-align: center;
+    }
+    .logo h1{
+        font-size: 3.4rem;
+    }
+
+    /* Nav style */
+    .nav-container{
+      display: flex;
+      justify-content: center;
+      border-top:1px solid #999;
+      border-bottom:1px solid #999;
+      margin-bottom: 50px;
+    }
+    .nav-link{
+      padding: 20px 13px;
+    }
+    .nav-link:hover{
+      background: #000;
+      color: #fff;
+    }
+
+    /* Search bar style */
+    .search-bar{
+      margin-bottom: 30px;
+    }
+
+    .search-container{
+      display: flex;
+      justify-content: center;
+
+    }
+
+    .search-text{
+      background: none;
+      border: none;
+      border:1px solid #999;
+      width: 300px;
+      line-height: 30px;
+      border-radius: 4px;
+      padding: 5px 9px;
+      
+    }
+
+    .search-btn{
+      background: none;
+      padding: 5px;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Blog detail container */
+
+    .blog-detail-container{
+      padding: 30px 10px;
+      margin: 0px 200px;
+    }
+
+    .blog-detail-image{
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .blog-detail-image img{
+      width: 100%;
+    }
+
+    .blog-detail-title{
+      margin: 20px 0px;
+    }
+
+    .blog-detail-category,.blog-detail-author,.blog-detail-date{
+      font-size: 0.8rem;
+      color: #999;
+    }
+
+    .blog-detail-container p{
+      padding: 10px;
+      word-spacing: 2px;
+      letter-spacing: 0.2px;
+      line-height: 30px;
+      margin: 10px 0px;
+    }
+
+    /* related blog style */
+    h2{
+      font-size: 1.5rem;
+      margin-top: 20px;
+      margin-left: 10px;
+    }
+
+    .blog-container{
+      display: flex;
+      justify-content: space-around;
+      margin-top: 50px;
+    }
+
+    .blog{
+      width: 24%;
+      padding: 20px 5px;
+    }
+
+    .blog img{
+        width: 100%;
+    }
+
+    .blog-category,.blog-author,.blog-date{
+        font-size: 0.8rem;
+        color: #999;
+    }
+
+    .blog-title{
+      padding: 5px 0px;
+    }
+
+    .blog-author,.blog-date{
+      margin-top: 30px;
+    }
+
+    /* small screen style */
+    @media(max-width:760px){
+      .blog-detail-container{
+        width: 90%;
+        margin:0 auto;
+      }
+
+      .blog-container{
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .blog{
+          width: 80%;
+      }
+    }
+
+</style>
+
+</head>
+<body>
+
+  <div class="logo"><h1>Analy</h1></div>
+
+  <div class="nav-container nav-menu">
+      <a href="#" class="nav-link">Technology</a>
+      <a href="#" class="nav-link">Business</a>
+      <a href="#" class="nav-link">Education</a>
+      <a href="#" class="nav-link">Automobile</a>
+      <a href="#" class="nav-link">Personality</a>
+  </div>
+
+  <div class="search-bar">
+    <form action="" class="search-container">
+      <input type="text" name="" class="search-text"/>
+      <button type="submit" class="search-btn">Search</button>
+    </form>
+  </div>
+
+  <div class="blog-detail-container">
+    <div class="blog-detail-image">
+      <img src="{{ asset('images/blog.jpg') }}" alt="blog image"/>
+    </div>
+    <h1 class="blog-detail-title">Data structures for javascript</h1>
+    <span class="blog-detail-category">Technology</span><br>
+    <span class="blog-detail-author">Liam asaurus</span>
+    <span class="blog-detail-date">27 November 2020</span>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem officiis reprehenderit corrupti illo quaerat. Possimus aperiam odit inventore nulla veniam, eaque vel dolores, adipisci, numquam illum beatae nesciunt odio. Soluta commodi iure esse veritatis nulla cum? Et eaque voluptate praesentium.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui ea eum necessitatibus totam aut vitae ducimus ullam beatae! Dolorem aperiam molestiae, repellat optio rerum ullam, cum fugiat mollitia officiis, veritatis architecto in eveniet? Quis fugiat iste officiis aspernatur quae illo earum libero non aliquid, dolorem molestiae enim similique nemo rem pariatur veniam veritatis eveniet eaque possimus accusantium numquam repellat adipisci saepe? Repudiandae amet beatae aliquid quo. In maxime voluptas iusto, esse voluptate minus autem, ipsam explicabo modi saepe magnam! Neque expedita ipsam quis obcaecati, aliquam numquam quae ad delectus, cum quod minus! Iste iure voluptates repellat suscipit nemo, mollitia magni.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, nobis? Porro corporis rerum, quia exercitationem eveniet sit libero aliquam dolorem magni totam fugit odio atque veritatis? Quibusdam tempore harum placeat consequatur iure autem adipisci velit accusamus, expedita porro ducimus ab repellat perspiciatis! Iusto ullam error esse illum qui consectetur expedita, itaque perferendis ratione sit tempora asperiores natus modi, placeat ducimus. Aspernatur aliquam eligendi architecto nobis, sequi incidunt eius vel modi repellat ut dolorum maxime quis recusandae quam doloribus? Provident repellendus assumenda voluptate at incidunt ipsam quae deleniti, delectus ratione. Incidunt totam quo temporibus magni vero sint laudantium quod ut eum natus mollitia molestiae dignissimos, quisquam harum esse adipisci error non accusamus, ea, consectetur facilis a fuga? Exercitationem dolores, deserunt blanditiis vitae, obcaecati provident animi eos architecto sequi totam saepe, iure excepturi nihil dignissimos nam aut error. Ipsam atque, incidunt deserunt odit tempore nam fugit, eveniet magni, debitis ipsum corporis id.</p>
+  </div>
+
+  <div class="related-blogs-container">
+    <h2>Related Blogs</h2>
+    <div class="blog-container">
+        <div class="blog">
+            <img src="{{ asset('images/blog.jpg') }}" alt="blog-image">
+            <p class="blog-category">Technology</p>
+            <a href="#" class="blog-title-link"><h3 class="blog-title">Data structures in javascript</h3></a>
+            <p class="blog-description">For frontend software engineers</p>
+            <span class="blog-author">Liam Asaurus</span>
+            <span class="blog-date">Nov16,2020</span>
+        </div>
+        <div class="blog">
+            <img src="{{ asset('images/blog.jpg') }}" alt="blog-image">
+            <p class="blog-category">Technology</p>
+            <a href="#" class="blog-title-link"><h3 class="blog-title">Data structures in javascript</h3></a>
+            <p class="blog-description">For frontend software engineers</p>
+            <span class="blog-author">Liam Asaurus</span>
+            <span class="blog-date">Nov16,2020</span>
+        </div>
+        <div class="blog">
+            <img src="{{ asset('images/blog.jpg') }}" alt="blog-image">
+            <p class="blog-category">Technology</p>
+            <a href="#" class="blog-title-link"><h3 class="blog-title">Data structures in javascript</h3></a>
+            <p class="blog-description">For frontend software engineers</p>
+            <span class="blog-author">Liam Asaurus</span>
+            <span class="blog-date">Nov16,2020</span>
+        </div>
+        <div class="blog">
+            <img src="{{ asset('images/blog.jpg') }}" alt="blog-image">
+            <p class="blog-category">Technology</p>
+            <a href="#" class="blog-title-link"><h3 class="blog-title">Data structures in javascript</h3></a>
+            <p class="blog-description">For frontend software engineers</p>
+            <span class="blog-author">Liam Asaurus</span>
+            <span class="blog-date">Nov16,2020</span>
+        </div>
+    </div>
+  </div>
+  
+</body>
+</html>

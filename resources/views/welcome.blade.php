@@ -53,6 +53,13 @@
           color: #fff;
         }
 
+        .logout-item{
+          padding: 20px 13px;
+          background-color: #000;
+          color: #fff;
+          margin-left: 30%;
+        }
+
         /* Search bar style */
         .search-bar{
           margin-bottom: 30px;
@@ -91,7 +98,6 @@
 
         .blog-container{
           display: flex;
-          justify-content: space-around;
           margin-top: 50px;
         }
 
@@ -139,6 +145,20 @@
             margin-top: 30px;
         }
 
+        /* add blog btn style */
+
+        .add-blog-btn{
+        position: fixed;
+        right: 40px;
+        bottom: 40px;
+        z-index: 9999;
+        background-color: #000;
+        color: #fff;
+        cursor: pointer;
+        padding: 10px 20px;
+        border-radius: 6px;
+        }
+
         /* big screen style */
         @media(min-width:1000px){
             h2{
@@ -160,6 +180,14 @@
             .blog{
                 width: 80%;
             }
+
+            .logout-item{
+              margin-left: 0px;
+            }
+
+            .nav-link,.logout-item{
+              font-size: 10px;
+            }
         }
 
 
@@ -167,111 +195,196 @@
 </head>
 <body>
 
-    <div class="wrap">
-        <div class="search">
-           <input type="text" class="searchTerm" placeholder="What are you looking for?">
-           <button type="submit" class="searchButton">
-             <i class="fa fa-search"></i>
-          </button>
-        </div>
-     </div>
+    @if (\Request::route()->getName() != 'create-blog')
+        <a href="{{ route('create-blog') }}" class="add-blog-btn">+ Blog</a>
+    @endif
 
     <div class="logo"><h1>Analy</h1></div>
 
     <div class="nav-container nav-menu">
-        <a href="#" class="nav-link">Technology</a>
-        <a href="#" class="nav-link">Business</a>
-        <a href="#" class="nav-link">Education</a>
-        <a href="#" class="nav-link">Automobile</a>
-        <a href="#" class="nav-link">Personality</a>
+      <a href="{{ route('show-cat-blog',"Technology") }}" class="nav-link">Technology</a>
+      <a href="{{ route('show-cat-blog',"Business") }}" class="nav-link">Business</a>
+      <a href="{{ route('show-cat-blog',"Education") }}" class="nav-link">Education</a>
+      <a href="{{ route('show-cat-blog',"Automobile") }}" class="nav-link">Automobile</a>
+      <a href="{{ route('show-cat-blog',"Personality") }}" class="nav-link">Personality</a>
+
+      @guest
+        <a href="{{ url('/register') }}" class="logout-item">Login</a>
+        @else
+        <a class="logout-item" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+            {{ __('Logout') }}
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+        @endguest
+
     </div>
 
     <div class="search-bar">
-      <form action="" class="search-container">
-        <input type="text" name="" class="search-text"/>
+      <form action="{{ route('search-blog') }}" class="search-container" method="POST">
+        @csrf
+        <input type="text" name="keyword" class="search-text"/>
         <button type="submit" class="search-btn">Search</button>
       </form>
     </div>
 
-    <h2>Popular on Analy</h2>
-    <div class="blog-container">
-        <div class="blog">
-            <img src="{{ asset('images/blog.jpg') }}" alt="blog-image">
-            <p class="blog-category">Technology</p>
-            <a href="#" class="blog-title-link"><h3 class="blog-title">Data structures in javascript</h3></a>
-            <p class="blog-description">For frontend software engineers</p>
-            <span class="blog-author">Liam Asaurus</span>
-            <span class="blog-date">Nov16,2020</span>
-        </div>
-        <div class="blog">
-            <img src="{{ asset('images/blog.jpg') }}" alt="blog-image">
-            <p class="blog-category">Technology</p>
-            <a href="#" class="blog-title-link"><h3 class="blog-title">Data structures in javascript</h3></a>
-            <p class="blog-description">For frontend software engineers</p>
-            <span class="blog-author">Liam Asaurus</span>
-            <span class="blog-date">Nov16,2020</span>
-        </div>
-        <div class="blog">
-            <img src="{{ asset('images/blog.jpg') }}" alt="blog-image">
-            <p class="blog-category">Technology</p>
-            <a href="#" class="blog-title-link"><h3 class="blog-title">Data structures in javascript</h3></a>
-            <p class="blog-description">For frontend software engineers</p>
-            <span class="blog-author">Liam Asaurus</span>
-            <span class="blog-date">Nov16,2020</span>
-        </div>
-        <div class="blog">
-            <img src="{{ asset('images/blog.jpg') }}" alt="blog-image">
-            <p class="blog-category">Technology</p>
-            <a href="#" class="blog-title-link"><h3 class="blog-title">Data structures in javascript</h3></a>
-            <p class="blog-description">For frontend software engineers</p>
-            <span class="blog-author">Liam Asaurus</span>
-            <span class="blog-date">Nov16,2020</span>
-        </div>
-    </div>
-
     <h2>Latest on Analy</h2>
-    <div class="blog-container">
-        <div class="blog">
-            <img src="{{ asset('images/blog.jpg') }}" alt="blog-image">
-            <p class="blog-category">Technology</p>
-            <a href="#" class="blog-title-link"><h3 class="blog-title">Data structures in javascript</h3></a>
-            <p class="blog-description">For frontend software engineers</p>
-            <span class="blog-author">Liam Asaurus</span>
-            <span class="blog-date">Nov16,2020</span>
-        </div>
-        <div class="blog">
-            <img src="{{ asset('images/blog.jpg') }}" alt="blog-image">
-            <p class="blog-category">Technology</p>
-            <a href="#" class="blog-title-link"><h3 class="blog-title">Data structures in javascript</h3></a>
-            <p class="blog-description">For frontend software engineers</p>
-            <span class="blog-author">Liam Asaurus</span>
-            <span class="blog-date">Nov16,2020</span>
-        </div>
-        <div class="blog">
-            <img src="{{ asset('images/blog.jpg') }}" alt="blog-image">
-            <p class="blog-category">Technology</p>
-            <a href="#" class="blog-title-link"><h3 class="blog-title">Data structures in javascript</h3></a>
-            <p class="blog-description">For frontend software engineers</p>
-            <span class="blog-author">Liam Asaurus</span>
-            <span class="blog-date">Nov16,2020</span>
-        </div>
-        <div class="blog">
-            <img src="{{ asset('images/blog.jpg') }}" alt="blog-image">
-            <p class="blog-category">Technology</p>
-            <a href="#" class="blog-title-link"><h3 class="blog-title">Data structures in javascript</h3></a>
-            <p class="blog-description">For frontend software engineers</p>
-            <span class="blog-author">Liam Asaurus</span>
-            <span class="blog-date">Nov16,2020</span>
-        </div>
-    </div>
 
-    <div class="registeration-section">
-      <div class="sign-up">
-        <p>Make an account and share your blogs on <big>Analy</big>. Your knowledge tank is here....</p><br>
-        <a href="#">Create an account</a>
-        </form>
-      </div>
-    </div>
-    
+        <?php $counter=0; ?>
+        @foreach ($blogs as $blog)
+            @if ($counter == 0 || $counter%4 == 0)
+                <div class="blog-container">
+            @endif
+                    <div class="blog">
+                        <img src="https://picsum.photos/id/{{ $blog->id+1 }}/200/100" alt="blog-image">
+                        <p class="blog-category">{{ $blog->category->name }}</p>
+                        <a href="{{ route('show-blog',$blog->id) }}" class="blog-title-link"><h3 class="blog-title">{{ $blog->title }}</h3></a>
+                        <p class="blog-description">{{ $blog->desc }}</p>
+                        <span class="blog-author">{{ $blog->author}}</span>
+                        <span class="blog-date"> {{ $blog->created_at->diffForHumans() }}</span>
+                    </div>
+            <?php $counter++; ?>
+            @if($counter%4==0)
+                </div>
+            @endif    
+        @endforeach
+
+    <h2>Technology on Analy</h2>
+    <?php $counter=0; ?>
+        @foreach ($blogs as $blog)
+            @if ($counter == 0 || $counter%4 == 0)
+                <div class="blog-container">
+            @endif
+            @if ($blog->category->name === 'Technology' )
+                <div class="blog">
+                    <img src="https://picsum.photos/id/{{ $blog->id+1 }}/200/100" alt="blog-image">
+                    <p class="blog-category">{{ $blog->category->name }}</p>
+                    <a href="{{ route('show-blog',$blog->id) }}" class="blog-title-link"><h3 class="blog-title">{{ $blog->title }}</h3></a>
+                    <p class="blog-description">{{ $blog->desc }}</p>
+                    <span class="blog-author">{{ $blog->author}}</span>
+                    <span class="blog-date"> {{ $blog->created_at->diffForHumans() }}</span>
+                </div>
+            <?php $counter++; ?>
+            @endif
+            @if($counter%4==0)
+                </div>
+            @endif    
+        @endforeach
+        @if($counter%4!=0)
+            </div>
+        @endif
+
+        <h2>Personality on Analy</h2>
+        <?php $counter=0; ?>
+            @foreach ($blogs as $blog)
+            @if ($blog->category->name === 'Personality' )
+                @if ($counter == 0 || $counter%4 == 0)
+                    <div class="blog-container">
+                @endif
+                <div class="blog">
+                    <img src="https://picsum.photos/id/{{ $blog->id+1 }}/200/100" alt="blog-image">
+                    <p class="blog-category">{{ $blog->category->name }}</p>
+                    <a href="{{ route('show-blog',$blog->id) }}" class="blog-title-link"><h3 class="blog-title">{{ $blog->title }}</h3></a>
+                    <p class="blog-description">{{ $blog->desc }}</p>
+                    <span class="blog-author">{{ $blog->author}}</span>
+                    <span class="blog-date"> {{ $blog->created_at->diffForHumans() }}</span>
+                </div>
+                <?php $counter++; ?>
+                @endif
+                @if($counter%4==0)
+                    </div>
+                @endif    
+            @endforeach
+            @if($counter%4!=0)
+                </div>
+            @endif
+
+        <h2>Education on Analy</h2>
+        <?php $counter=0; ?>
+            @foreach ($blogs as $blog)
+            @if ($blog->category->name === 'Education' )
+                @if ($counter == 0 || $counter%4 == 0)
+                    <div class="blog-container">
+                @endif
+                <div class="blog">
+                    <img src="https://picsum.photos/id/{{ $blog->id+1 }}/200/100" alt="blog-image">
+                    <p class="blog-category">{{ $blog->category->name }}</p>
+                    <a href="{{ route('show-blog',$blog->id) }}" class="blog-title-link"><h3 class="blog-title">{{ $blog->title }}</h3></a>
+                    <p class="blog-description">{{ $blog->desc }}</p>
+                    <span class="blog-author">{{ $blog->author}}</span>
+                    <span class="blog-date"> {{ $blog->created_at->diffForHumans() }}</span>
+                </div>
+                <?php $counter++; ?>
+                @endif
+                @if($counter%4==0)
+                    </div>
+                @endif    
+            @endforeach
+            @if($counter%4!=0)
+                </div>
+            @endif
+
+        <h2>Business on Analy</h2>
+        <?php $counter=0; ?>
+            @foreach ($blogs as $blog)
+            @if ($blog->category->name === 'Business' )
+                @if ($counter == 0 || $counter%4 == 0)
+                    <div class="blog-container">
+                @endif
+                <div class="blog">
+                    <img src="https://picsum.photos/id/{{ $blog->id+1 }}/200/100" alt="blog-image">
+                    <p class="blog-category">{{ $blog->category->name }}</p>
+                    <a href="{{ route('show-blog',$blog->id) }}" class="blog-title-link"><h3 class="blog-title">{{ $blog->title }}</h3></a>
+                    <p class="blog-description">{{ $blog->desc }}</p>
+                    <span class="blog-author">{{ $blog->author}}</span>
+                    <span class="blog-date"> {{ $blog->created_at->diffForHumans() }}</span>
+                </div>
+                <?php $counter++; ?>
+                @endif
+                @if($counter%4==0)
+                    </div>
+                @endif    
+            @endforeach
+            @if($counter%4!=0)
+                </div>
+            @endif
+
+        <h2>Automobile on Analy</h2>
+        <?php $counter=0; ?>
+            @foreach ($blogs as $blog)
+            @if ($blog->category->name === 'Automobile' )
+                @if ($counter == 0 || $counter%4 == 0)
+                    <div class="blog-container">
+                @endif
+                <div class="blog">
+                    <img src="https://picsum.photos/id/{{ $blog->id+1 }}/200/100" alt="blog-image">
+                    <p class="blog-category">{{ $blog->category->name }}</p>
+                    <a href="{{ route('show-blog',$blog->id) }}" class="blog-title-link"><h3 class="blog-title">{{ $blog->title }}</h3></a>
+                    <p class="blog-description">{{ $blog->desc }}</p>
+                    <span class="blog-author">{{ $blog->author}}</span>
+                    <span class="blog-date"> {{ $blog->created_at->diffForHumans() }}</span>
+                </div>
+                <?php $counter++; ?>
+                @endif
+                @if($counter%4==0)
+                    </div>
+                @endif    
+            @endforeach
+            @if($counter%4!=0)
+                </div>
+            @endif
+
+            @guest
+              <div class="registeration-section">
+                <div class="sign-up">
+                  <p>Make an account and share your blogs on <big>Analy</big>. Your knowledge tank is here....</p><br>
+                  <a href="{{ url('/register') }}">Create an account</a>
+                  </form>
+                </div>
+              </div>
+            @endguest
 </body>
 </html>
